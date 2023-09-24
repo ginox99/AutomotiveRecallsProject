@@ -7,7 +7,7 @@ GROUP BY manufacturer
 ORDER BY num_recalls DESC
 LIMIT 12
 
---Top 12 manufacturers by number of affected vechicles
+--Top 12 manufacturers by number of affected vehicles
 SELECT  manufacturer, SUM(potentially_affected) AS num_affected
 FROM recalls
 WHERE recall_type = 'Vehicle'
@@ -26,7 +26,7 @@ AND report_received_date BETWEEN '2003-01-01' AND '2022-12-31'
 GROUP BY year
 ORDER BY year
 
---Number of affected vechicles per year
+--Number of affected vehicles per year
 SELECT EXTRACT(YEAR FROM report_received_date) AS year, 
 SUM(potentially_affected) AS num_affected
 FROM recalls
@@ -44,7 +44,7 @@ AND report_received_date BETWEEN '2003-01-01' AND '2022-12-31'
 GROUP BY month
 ORDER BY month 
 
---Number of recalls seaonally
+--Number of recalls seasonally
 WITH MonthlyRecallCounts AS (
 SELECT EXTRACT(MONTH FROM report_received_date) AS month,
        COUNT(*) AS num_recalls
